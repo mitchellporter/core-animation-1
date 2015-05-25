@@ -21,7 +21,7 @@
 {
     [super viewDidLoad];
 
-    // Background
+    // Background color
     self.view.backgroundColor = [UIColor grayColor];
     
     // Create sublayer
