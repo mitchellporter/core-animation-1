@@ -36,8 +36,21 @@
 
 - (void)transform
 {
-    // Rotate the layer 45 degrees
-    CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI_4);
+    // Creating a compound transform using several functions
+    
+    // Create a new transform
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    // Scale by 50%
+    transform = CGAffineTransformScale(transform, 0.5, 0.5);
+    
+    // Rotate by 30 degrees
+    transform = CGAffineTransformRotate(transform, M_PI / 180.0 * 30.0);
+    
+    // Translate by 200 points
+    transform = CGAffineTransformTranslate(transform, 200, 0);
+    
+    // Apply transform to layer
     self.layerView.layer.affineTransform = transform;
 }
 
