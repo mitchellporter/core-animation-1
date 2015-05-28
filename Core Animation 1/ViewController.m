@@ -36,22 +36,20 @@
 
 - (void)transform
 {
-    // Creating a compound transform using several functions
-    
+    // Applying perspective to the transform
+
     // Create a new transform
-    CGAffineTransform transform = CGAffineTransformIdentity;
+    CATransform3D transform = CATransform3DIdentity;
     
-    // Scale by 50%
-    transform = CGAffineTransformScale(transform, 0.5, 0.5);
+    // Apply perspective
+    transform.m34 = - 1.0 / 500.0;
     
-    // Rotate by 30 degrees
-    transform = CGAffineTransformRotate(transform, M_PI / 180.0 * 30.0);
+    // Rotate by 45 degrees along the Y axis
+    transform = CATransform3DRotate(transform, M_PI_4, 0, 1, 0);
     
-    // Translate by 200 points
-    transform = CGAffineTransformTranslate(transform, 200, 0);
-    
-    // Apply transform to layer
-    self.layerView.layer.affineTransform = transform;
+    // Apply to layer
+    self.layerView.layer.transform = transform;
+
 }
 
 - (void)updateLayer
@@ -68,5 +66,6 @@
     CGContextStrokeEllipseInRect(ctx, layer.bounds);
 }
 
+//97
 
 @end
